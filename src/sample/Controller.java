@@ -37,6 +37,8 @@ public class Controller {
     private ListView listView3;
     @FXML
     private Button closeBtn;
+    @FXML
+    private Button closeBtn2;
 
 
 
@@ -44,9 +46,28 @@ public class Controller {
 
 
     @FXML
-    void urlSetText (ActionEvent actionEvent){
+    void urlSetText (ActionEvent actionEvent) throws IOException {
     //  key1.setText("Hello");
-        new WebCrawler().getPageLinks("http://www.google.com/");
+
+        if(url.getText().isEmpty()){
+            Parent root = FXMLLoader.load(getClass().getResource("ErrorMessage.fxml"));
+
+            Scene scene=new Scene(root);
+
+            Stage stage =new Stage();
+
+
+
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("About");
+            stage.setScene(scene);
+            root.setEffect(new DropShadow());
+            stage.show();
+        }
+        else {
+            //new WebCrawler().getPageLinks("http://www.google.com/");
+            new WebCrawler().getPageLinks(url.getText());
+        }
     }
 
     @FXML
@@ -84,9 +105,18 @@ public class Controller {
 
     @FXML
     void close(ActionEvent actionEvent){
-        Stage stage = (Stage) closeBtn.getScene().getWindow();
-        stage.close();
+        if(actionEvent.getSource()==closeBtn) {
+            Stage stage = (Stage) closeBtn.getScene().getWindow();
+            stage.close();
+        }
+        if(actionEvent.getSource()==closeBtn2) {
+            Stage stage = (Stage) closeBtn2.getScene().getWindow();
+            stage.close();
+        }
+
     }
+
+
 
     @FXML
     void exit (ActionEvent actionEvent){
