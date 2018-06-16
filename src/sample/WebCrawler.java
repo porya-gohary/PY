@@ -10,11 +10,14 @@ import java.util.HashSet;
 
 
 public class WebCrawler {
+    String string;
+    Controller controller;
 
     private HashSet<String> links;
 
-    public WebCrawler() {
+    public WebCrawler(Controller c) {
         links = new HashSet<String>();
+        controller=c;
     }
 
     public void getPageLinks(String URL) {
@@ -31,11 +34,18 @@ public class WebCrawler {
                 Document document = Jsoup.connect(URL).get();
                 //3. Parse the HTML to extract links to other URLs
                 Elements linksOnPage = document.select("a[href]");
+                //Elements linksOnPage = document.select("a");
+
+                for (Element page :linksOnPage){
+                    //System.out.println(page.attr("abs:href"));
+                    controller.addMainUrl(page.attr("abs:href"));
+
+                }
 
                 //5. For each extracted URL... go back to Step 4.
-                for (Element page : linksOnPage) {
-                    getPageLinks(page.attr("abs:href"));
-                }
+//                for (Element page : linksOnPage) {
+//                    getPageLinks(page.attr("abs:href"));
+//                }
             } catch (IOException e) {
                 System.err.println("For '" + URL + "': " + e.getMessage());
             }

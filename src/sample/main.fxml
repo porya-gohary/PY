@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -32,12 +37,12 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.14799154334038056" layoutX="402.0" layoutY="181.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="963.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+      <SplitPane dividerPositions="0.14799154334038056" layoutX="402.0" layoutY="181.0" orientation="VERTICAL" prefHeight="494.0" prefWidth="963.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="961.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="آدرس سایت:" textAlignment="CENTER" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
-                  <TextField fx:id="url" layoutX="727.0" layoutY="8.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="8.0" />
+                  <TextField fx:id="url" layoutX="727.0" layoutY="8.0" onAction="#urlSetText" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="8.0" />
                   <Text layoutX="459.96484375" layoutY="22.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 1:" AnchorPane.rightAnchor="433.2890625" AnchorPane.topAnchor="10.0" />
                   <TextField id="key1" fx:id="key1" layoutX="368.0" layoutY="8.0" prefHeight="25.0" prefWidth="88.0" AnchorPane.rightAnchor="505.0" AnchorPane.topAnchor="8.0" />
                   <Text layoutX="648.0" layoutY="22.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="تعداد سطوح:" AnchorPane.rightAnchor="246.994140625" AnchorPane.topAnchor="10.0" />
@@ -62,9 +67,9 @@
                   <Button layoutX="431.0" layoutY="40.0" mnemonicParsing="false" onAction="#urlSetText" prefHeight="25.0" prefWidth="100.0" text="شروع" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="430.0" AnchorPane.topAnchor="40.0" />
                </children>
             </AnchorPane>
-          <AnchorPane>
+          <AnchorPane prefHeight="434.0" prefWidth="961.0">
                <children>
-                  <SplitPane dividerPositions="0.6777893639207507" layoutX="481.0" layoutY="134.0" prefHeight="528.0" prefWidth="961.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.6777893639207507" layoutX="481.0" layoutY="134.0" prefHeight="416.0" prefWidth="961.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="634.0">
                            <children>
@@ -76,7 +81,7 @@
                                           <ListView id="result3" fx:id="listView3" layoutX="22.0" layoutY="35.0" prefHeight="354.0" prefWidth="256.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="41.0" />
                                        </children>
                                     </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="339.0">
                                        <children>
                                           <Text layoutX="106.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لیست فایل‌های یافت شده:" textAlignment="CENTER" AnchorPane.topAnchor="12.0" />
                                           <ListView id="result2" fx:id="listView2" layoutX="42.0" layoutY="35.0" prefHeight="354.0" prefWidth="256.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="41.0" />
@@ -98,5 +103,16 @@
             </AnchorPane>
         </items>
       </SplitPane>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="14.0" layoutY="527.0" prefHeight="25.0" prefWidth="23.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" />
+      <Label layoutX="46.0" layoutY="531.0" text="Ready" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="46.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image" fitHeight="25.0" fitWidth="23.0" layoutX="13.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="13.0">
+         <image>
+            <Image url="@Ready.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
