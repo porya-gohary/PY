@@ -4,13 +4,12 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -39,6 +38,10 @@ public class Controller {
     private Button closeBtn;
     @FXML
     private Button closeBtn2;
+    @FXML
+    private ProgressIndicator progressIndicator;
+    @FXML
+    private Image image;
 
 
 
@@ -66,7 +69,8 @@ public class Controller {
         }
         else {
             //new WebCrawler().getPageLinks("http://www.google.com/");
-            new WebCrawler().getPageLinks(url.getText());
+            new WebCrawler(this).getPageLinks(url.getText());
+
         }
     }
 
@@ -121,6 +125,13 @@ public class Controller {
     @FXML
     void exit (ActionEvent actionEvent){
         Platform.exit();
+    }
+
+    @FXML
+    void addMainUrl(String string){
+        listView1.getItems().add(string);
+
+
     }
 
 
