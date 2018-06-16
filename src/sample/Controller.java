@@ -10,14 +10,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 
 
 
-public class Controller {
+public class Controller{
     @FXML
     private TextField url;
     @FXML
@@ -41,7 +43,23 @@ public class Controller {
     @FXML
     private ProgressIndicator progressIndicator;
     @FXML
-    private Image image;
+    private ImageView readyImage;
+    @FXML
+    private Label ReadyLabel;
+    @FXML
+    private Label WorkingLabel;
+    @FXML
+    private Label ErrorLabel;
+    @FXML
+    private ImageView ErrorImg;
+
+
+
+    WebCrawlerThread webCrawlerThread;
+    String ErrMsg;
+
+
+
 
 
 
@@ -69,7 +87,24 @@ public class Controller {
         }
         else {
             //new WebCrawler().getPageLinks("http://www.google.com/");
-            new WebCrawler(this).getPageLinks(url.getText());
+            progressIndicator.setVisible(true);
+            progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+            ErrorLabel.setVisible(false);
+            readyImage.setVisible(false);
+            ErrorImg.setVisible(false);
+            WorkingLabel.setVisible(true);
+            ReadyLabel.setVisible(false);
+
+
+            //new WebCrawler(this).getPageLinks(url.getText());
+            //new WebCrawlerThread(this,url.getText()).start();
+            webCrawlerThread =new WebCrawlerThread(this ,url.getText());
+            webCrawlerThread.start();
+
+
+
+
+
 
         }
     }
@@ -131,6 +166,34 @@ public class Controller {
     void addMainUrl(String string){
         listView1.getItems().add(string);
 
+
+    }
+    @FXML
+    void Ready(){
+        WorkingLabel.setVisible(false);
+        progressIndicator.setVisible(false);
+        ErrorLabel.setVisible(false);
+        ErrorImg.setVisible(false);
+        readyImage.setVisible(true);
+        ReadyLabel.setVisible(true);
+
+
+    }
+    void Error(String s){
+        ErrMsg=s;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                WorkingLabel.setVisible(false);
+                progressIndicator.setVisible(false);
+                readyImage.setVisible(false);
+                ReadyLabel.setVisible(false);
+                ErrorLabel.setVisible(true);
+                ErrorLabel.setText(ErrMsg);
+                ErrorImg.setVisible(true);
+            }
+        });
+        webCrawlerThread.stop();
 
     }
 

@@ -8,21 +8,20 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.HashSet;
 
-
-public class WebCrawler {
-    String string;
-    Controller controller;
-
+public class WebCrawlerThread extends Thread {
+    Controller c;
+    String URL;
     private HashSet<String> links;
 
-    public WebCrawler(Controller c) {
-        links = new HashSet<String>();
-        controller=c;
-    }
 
-    public void getPageLinks(String URL) {
-        //4. Check if you have already crawled the URLs
-        //(we are intentionally not checking for duplicate content in this example)
+    public WebCrawlerThread(Controller controller, String url){
+        c=controller;
+        URL=url;
+        links = new HashSet<String>();
+
+    }
+    public void run() {
+
         if (!links.contains(URL)) {
             try {
                 //4. (i) If not add it to the index
@@ -36,20 +35,27 @@ public class WebCrawler {
                 Elements linksOnPage = document.select("a[href]");
                 //Elements linksOnPage = document.select("a");
 
-                for (Element page :linksOnPage){
+                for (Element page : linksOnPage) {
                     //System.out.println(page.attr("abs:href"));
-                    controller.addMainUrl(page.attr("abs:href"));
+
+                    c.addMainUrl(page.attr("abs:href"));
 
                 }
+                c.Ready();
+
 
                 //5. For each extracted URL... go back to Step 4.
 //                for (Element page : linksOnPage) {
 //                    getPageLinks(page.attr("abs:href"));
 //                }
             } catch (IOException e) {
-                System.err.println("For '" + URL + "': " + e.getMessage());
+               // System.err.println("For '" + URL + "': " + e.getMessage());
+                //this.stop();
+                c.Error("Error : " + e.getMessage());
             }
         }
     }
+
+
 
 }
