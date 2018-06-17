@@ -145,7 +145,11 @@ public class WebCrawlerThread extends Thread {
 
 
                 for (Element file:files){
-                    c.addFilesURL(file.attr("abs:href"));
+                    String s=file.attr("abs:href");
+                    if(s.contains(".exe")||s.contains(".deb")||s.contains(".zip")||s.contains(".rar")||
+                            s.contains(".msi")||s.contains(".png")||s.contains(".jpg")||s.contains(".gif")||
+                            s.contains(".ico")||s.contains(".pdf")||s.contains(".tar"))
+                        c.addFilesURL(file.attr("abs:href"));
                 }
 
                 for (Element page : linksOnPage) {

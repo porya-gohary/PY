@@ -6,8 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import jdk.internal.dynalink.beans.StaticClass;
 
+import javax.management.Notification;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -34,7 +36,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        
 
 
 

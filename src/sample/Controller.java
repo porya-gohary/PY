@@ -16,6 +16,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.management.Notification;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -181,6 +182,10 @@ public class Controller {
         readyImage.setVisible(true);
         ReadyLabel.setVisible(true);
         webCrawlerThread.stop();
+        String title = "Congratulations sir";
+        String message = "You've successfully created your first Tray Notification";
+
+
 
 
     }
