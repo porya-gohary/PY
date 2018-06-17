@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -71,20 +71,25 @@
                   <Button layoutX="141.0" layoutY="79.0" mnemonicParsing="false" onAction="#DirectoryChoose" text="..." />
                   <Label layoutX="355.0" layoutY="82.0" text="محل دانلود:" />
                   <TextField fx:id="DrcTextField" layoutX="171.0" layoutY="79.0" prefHeight="25.0" prefWidth="177.0" text="D:\PY\" />
-                  <CheckBox layoutX="140.0" layoutY="49.0" mnemonicParsing="false" text=".zip" />
-                  <CheckBox layoutX="184.0" layoutY="49.0" mnemonicParsing="false" text=".exe" />
-                  <CheckBox layoutX="231.0" layoutY="49.0" mnemonicParsing="false" text=".pdf" />
-                  <CheckBox layoutX="278.0" layoutY="49.0" mnemonicParsing="false" text=".jpg" />
-                  <CheckBox layoutX="325.0" layoutY="49.0" mnemonicParsing="false" text=".png" />
-                  <CheckBox layoutX="375.0" layoutY="49.0" mnemonicParsing="false" text=".gif" />
+                  <CheckBox fx:id="ChZip" layoutX="137.0" layoutY="49.0" mnemonicParsing="false" text=".zip" AnchorPane.leftAnchor="137.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChExe" layoutX="185.0" layoutY="49.0" mnemonicParsing="false" text=".exe" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChPdf" layoutX="233.0" layoutY="49.0" mnemonicParsing="false" text=".pdf" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChJpg" layoutX="281.0" layoutY="49.0" mnemonicParsing="false" text=".jpg" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChPng" layoutX="329.0" layoutY="49.0" mnemonicParsing="false" text=".png" AnchorPane.leftAnchor="329.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChGif" layoutX="377.0" layoutY="49.0" mnemonicParsing="false" text=".gif" AnchorPane.leftAnchor="377.0" AnchorPane.topAnchor="49.0" />
                   <Separator layoutX="420.0" layoutY="39.0" orientation="VERTICAL" prefHeight="72.0" prefWidth="4.0" />
                   <Text layoutX="580.96875" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 4:" />
                   <TextField id="key2" fx:id="key21" layoutX="455.0" layoutY="79.0" prefHeight="25.0" prefWidth="120.0" />
-                  <Label layoutX="354.0" layoutY="9.0" text="http://" />
-                  <CheckBox ellipsisString="" layoutX="918.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
-                  <CheckBox ellipsisString="" layoutX="655.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
-                  <CheckBox ellipsisString="" layoutX="918.0" layoutY="84.0" mnemonicParsing="false" textAlignment="RIGHT" />
-                  <CheckBox ellipsisString="" layoutX="655.0" layoutY="81.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <Label layoutX="359.0" layoutY="8.0" text="http://" />
+                  <CheckBox layoutX="918.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <CheckBox layoutX="655.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <CheckBox layoutX="918.0" layoutY="84.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <CheckBox layoutX="655.0" layoutY="81.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <Button layoutX="329.0" layoutY="3.0" mnemonicParsing="false" onAction="#OpenMainLink" prefHeight="25.0" prefWidth="24.0" text="🢅">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
           <AnchorPane prefHeight="434.0" prefWidth="961.0">
@@ -144,7 +149,7 @@
             <Image url="@error.png" />
          </image>
       </ImageView>
-      <Label fx:id="ErrorLabel" layoutX="46.0" layoutY="531.0" textFill="#b50000" visible="false">
+      <Label fx:id="ErrorLabel" layoutX="46.0" layoutY="531.0" textFill="#b50000" visible="false" AnchorPane.bottomAnchor="9.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

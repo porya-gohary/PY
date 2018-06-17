@@ -4,27 +4,21 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import javax.xml.soap.Text;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 
 public class Controller {
@@ -41,7 +35,7 @@ public class Controller {
     @FXML
     private ListView listView1;
     @FXML
-     private ListView listView2;
+    private ListView listView2;
     @FXML
     private ListView listView3;
     @FXML
@@ -63,35 +57,40 @@ public class Controller {
     @FXML
     private TextField DrcTextField;
 
+    //Download CheckBox
+    @FXML
+    private CheckBox ChGif;
+    @FXML
+    private CheckBox ChPng;
+    @FXML
+    private CheckBox ChJpg;
+    @FXML
+    private CheckBox ChPdf;
+    @FXML
+    private CheckBox ChExe;
+    @FXML
+    private CheckBox ChZip;
 
 
     WebCrawlerThread webCrawlerThread;
     String ErrMsg;
-    String StrorageFolder="D:\\PY\\";
-
-
-
-
-
-
-
+    String StrorageFolder = "D:\\PY\\";
 
 
     @FXML
-    void urlSetText (ActionEvent actionEvent) throws IOException {
-    //  key1.setText("Hello");
+    void urlSetText(ActionEvent actionEvent) throws IOException {
+        //  key1.setText("Hello");
 
-        if(url.getText().isEmpty()){
+        if (url.getText().isEmpty()) {
             Parent root = FXMLLoader.load(getClass().getResource("ErrorMessage.fxml"));
-            Scene scene=new Scene(root);
-            Stage stage =new Stage();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("About");
             stage.setScene(scene);
             root.setEffect(new DropShadow());
             stage.show();
-        }
-        else {
+        } else {
             //new WebCrawler().getPageLinks("http://www.google.com/");
             progressIndicator.setVisible(true);
             progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
@@ -104,19 +103,16 @@ public class Controller {
 
             //new WebCrawler(this).getPageLinks(url.getText());
             //new WebCrawlerThread(this,url.getText()).start();
-            webCrawlerThread =new WebCrawlerThread(this ,url.getText());
+            webCrawlerThread = new WebCrawlerThread(this, url.getText(),ChZip.isSelected(),ChExe.isSelected(),
+                    ChPdf.isSelected(),ChJpg.isSelected(),ChPng.isSelected(),ChGif.isSelected());
             webCrawlerThread.start();
-
-
-
-
 
 
         }
     }
 
     @FXML
-    void clearItems (ActionEvent actionEvent){
+    void clearItems(ActionEvent actionEvent) {
         url.clear();
         key1.clear();
         key2.clear();
@@ -131,10 +127,9 @@ public class Controller {
 
         Parent root = FXMLLoader.load(getClass().getResource("about.fxml"));
 
-        Scene scene=new Scene(root);
+        Scene scene = new Scene(root);
 
-        Stage stage =new Stage();
-
+        Stage stage = new Stage();
 
 
         stage.initStyle(StageStyle.UNDECORATED);
@@ -144,17 +139,15 @@ public class Controller {
         stage.show();
 
 
-
-
     }
 
     @FXML
-    void close(ActionEvent actionEvent){
-        if(actionEvent.getSource()==closeBtn) {
+    void close(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == closeBtn) {
             Stage stage = (Stage) closeBtn.getScene().getWindow();
             stage.close();
         }
-        if(actionEvent.getSource()==closeBtn2) {
+        if (actionEvent.getSource() == closeBtn2) {
             Stage stage = (Stage) closeBtn2.getScene().getWindow();
             stage.close();
         }
@@ -162,36 +155,38 @@ public class Controller {
     }
 
 
-
     @FXML
-    void exit (ActionEvent actionEvent){
+    void exit(ActionEvent actionEvent) {
         Platform.exit();
     }
 
     @FXML
-    void addMainUrl(String string){
+    void addMainUrl(String string) {
         listView3.getItems().add(string);
 
 
     }
 
     @FXML
-    void addFilesURL(String url){
+    void addFilesURL(String url) {
         listView2.getItems().add(url);
     }
+
     @FXML
-    void Ready(){
+    void Ready() {
         WorkingLabel.setVisible(false);
         progressIndicator.setVisible(false);
         ErrorLabel.setVisible(false);
         ErrorImg.setVisible(false);
         readyImage.setVisible(true);
         ReadyLabel.setVisible(true);
+        webCrawlerThread.stop();
 
 
     }
-    void Error(String s){
-        ErrMsg=s;
+
+    void Error(String s) {
+        ErrMsg = s;
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -209,41 +204,42 @@ public class Controller {
     }
 
     @FXML
-    void OpenLink(javafx.scene.input.MouseEvent event){
+    void OpenLink(javafx.scene.input.MouseEvent event) {
 
 
-        if(event.getSource()==listView1&&(listView1.getSelectionModel().getSelectedItem()!=null))
+        if (event.getSource() == listView1 && (listView1.getSelectionModel().getSelectedItem() != null))
             Main.openlink2((String) listView1.getSelectionModel().getSelectedItem());
-        if(event.getSource()==listView2&&(listView2.getSelectionModel().getSelectedItem()!=null))
+        if (event.getSource() == listView2 && (listView2.getSelectionModel().getSelectedItem() != null))
             Main.openlink2((String) listView2.getSelectionModel().getSelectedItem());
-        if(event.getSource()==listView3 &&(listView3.getSelectionModel().getSelectedItem()!=null))
+        if (event.getSource() == listView3 && (listView3.getSelectionModel().getSelectedItem() != null))
             Main.openlink2((String) listView3.getSelectionModel().getSelectedItem());
 
-
-
-
-
-
-
-
     }
+
     @FXML
-    void DirectoryChoose(){
+    void OpenMainLink() {
+        System.out.println(url.getText());
+        if (!url.getText().isEmpty()) {
+            Main.openlink2("http://" + url.getText());
+        }
+    }
+
+    @FXML
+    void DirectoryChoose() {
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(new Stage());
 
-        if(selectedDirectory == null){
+        if (selectedDirectory == null) {
             //No Directory selected
-        }else{
-           // System.out.println(selectedDirectory.getAbsolutePath());
-            StrorageFolder=selectedDirectory.getAbsolutePath();
+        } else {
+            // System.out.println(selectedDirectory.getAbsolutePath());
+            StrorageFolder = selectedDirectory.getAbsolutePath()+"\\";
             DrcTextField.setText(StrorageFolder);
 
 
         }
     }
-
 
 
 
