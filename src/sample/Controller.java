@@ -16,8 +16,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import javax.management.Notification;
-import java.awt.*;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -58,6 +57,7 @@ public class Controller {
     @FXML
     private TextField DrcTextField;
 
+
     //Download CheckBox
     @FXML
     private CheckBox ChGif;
@@ -75,6 +75,7 @@ public class Controller {
 
     WebCrawlerThread webCrawlerThread;
     String ErrMsg;
+    int Depth;
     String StrorageFolder = "D:\\PY\\";
 
 
@@ -82,7 +83,8 @@ public class Controller {
     void urlSetText(ActionEvent actionEvent) throws IOException {
         //  key1.setText("Hello");
 
-        if (url.getText().isEmpty()) {
+        //System.out.printf(menuButton.getText());
+        if (url.getText().isEmpty() || menuButton.getText().equals("انتخاب کنید")) {
             Parent root = FXMLLoader.load(getClass().getResource("ErrorMessage.fxml"));
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -105,7 +107,7 @@ public class Controller {
             //new WebCrawler(this).getPageLinks(url.getText());
             //new WebCrawlerThread(this,url.getText()).start();
             webCrawlerThread = new WebCrawlerThread(this, url.getText(),ChZip.isSelected(),ChExe.isSelected(),
-                    ChPdf.isSelected(),ChJpg.isSelected(),ChPng.isSelected(),ChGif.isSelected());
+                    ChPdf.isSelected(),ChJpg.isSelected(),ChPng.isSelected(),ChGif.isSelected(),Depth);
             webCrawlerThread.start();
 
 
@@ -182,8 +184,6 @@ public class Controller {
         readyImage.setVisible(true);
         ReadyLabel.setVisible(true);
         webCrawlerThread.stop();
-        String title = "Congratulations sir";
-        String message = "You've successfully created your first Tray Notification";
 
 
 
@@ -244,6 +244,13 @@ public class Controller {
 
 
         }
+    }
+
+    @FXML
+    void depthSelector(ActionEvent event){
+        MenuItem mi=(MenuItem) event.getSource();
+        Depth=Integer.parseInt(mi.getText());
+        menuButton.setText( mi.getText());
     }
 
 
