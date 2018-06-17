@@ -176,6 +176,18 @@ public class Controller {
     }
 
     @FXML
+    void addPagesURL(String url){
+        final String a=url;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                listView1.getItems().add(a);
+            }
+        });
+
+    }
+
+    @FXML
     void Ready() {
         WorkingLabel.setVisible(false);
         progressIndicator.setVisible(false);
@@ -183,7 +195,7 @@ public class Controller {
         ErrorImg.setVisible(false);
         readyImage.setVisible(true);
         ReadyLabel.setVisible(true);
-        webCrawlerThread.stop();
+
 
 
 
@@ -208,12 +220,13 @@ public class Controller {
 
     }
 
+
     @FXML
     void OpenLink(javafx.scene.input.MouseEvent event) {
 
 
         if (event.getSource() == listView1 && (listView1.getSelectionModel().getSelectedItem() != null))
-            Main.openlink2((String) listView1.getSelectionModel().getSelectedItem());
+            Main.openlink2(((String) listView1.getSelectionModel().getSelectedItem()).substring(12));
         if (event.getSource() == listView2 && (listView2.getSelectionModel().getSelectedItem() != null))
             Main.openlink2((String) listView2.getSelectionModel().getSelectedItem());
         if (event.getSource() == listView3 && (listView3.getSelectionModel().getSelectedItem() != null))

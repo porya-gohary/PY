@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1061.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -39,16 +39,16 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.20418848167539266" layoutX="402.0" layoutY="181.0" orientation="VERTICAL" prefHeight="494.0" prefWidth="963.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+      <SplitPane dividerPositions="0.20418848167539266" layoutX="402.0" layoutY="181.0" orientation="VERTICAL" prefHeight="575.0" prefWidth="991.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="961.0">
                <children>
                   <Text layoutX="736.9296875" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="آدرس سایت:" textAlignment="CENTER" AnchorPane.rightAnchor="163.07421875" AnchorPane.topAnchor="7.05078125" />
                   <TextField fx:id="url" layoutX="397.0" layoutY="5.0" onAction="#urlSetText" prefHeight="25.0" prefWidth="331.0" AnchorPane.rightAnchor="233.0" AnchorPane.topAnchor="5.0" />
-                  <Text layoutX="843.71484375" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 1:" AnchorPane.rightAnchor="49.5390625" AnchorPane.topAnchor="46.05078125" />
-                  <TextField id="key1" fx:id="key1" layoutX="720.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="44.0" />
-                  <Text layoutX="224.01171875" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="تعداد سطوح:" AnchorPane.rightAnchor="670.982421875" AnchorPane.topAnchor="7.05078125" />
-                  <MenuButton id="Lines" fx:id="menuButton" layoutX="131.0" layoutY="5.0" mnemonicParsing="false" text="انتخاب کنید" AnchorPane.rightAnchor="742.0" AnchorPane.topAnchor="5.0">
+                  <Text layoutX="859.4453125" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 1:" AnchorPane.rightAnchor="80.80859375" AnchorPane.topAnchor="46.05078125" />
+                  <TextField id="key1" fx:id="key1" layoutX="737.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="44.0" />
+                  <Text layoutX="264.2578125" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="تعداد سطوح:" AnchorPane.rightAnchor="728.736328125" AnchorPane.topAnchor="7.05078125" />
+                  <MenuButton id="Lines" fx:id="menuButton" layoutX="156.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="انتخاب کنید" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="803.0" AnchorPane.topAnchor="5.0">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#depthSelector" text="1" />
                         <MenuItem mnemonicParsing="false" onAction="#depthSelector" text="2" />
@@ -62,30 +62,30 @@
                         <MenuItem mnemonicParsing="false" onAction="#depthSelector" text="10" />
                      </items>
                   </MenuButton>
-                  <Text layoutX="579.19140625" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 2:" AnchorPane.rightAnchor="314.0625" AnchorPane.topAnchor="46.05078125" />
-                  <TextField id="key2" fx:id="key2" layoutX="455.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="386.0" AnchorPane.topAnchor="44.0" />
-                  <Text layoutX="843.9375" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 3:" AnchorPane.rightAnchor="49.31640625" AnchorPane.topAnchor="83.05078125" />
-                  <TextField id="key3" fx:id="key3" layoutX="720.0" layoutY="81.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="81.0" />
-                  <Button layoutX="21.0" layoutY="40.0" mnemonicParsing="false" onAction="#urlSetText" prefHeight="25.0" prefWidth="100.0" text="شروع" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="840.0" AnchorPane.topAnchor="40.0" />
+                  <Text layoutX="594.921875" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 2:" AnchorPane.rightAnchor="345.33203125" AnchorPane.topAnchor="46.05078125" />
+                  <TextField id="key2" fx:id="key2" layoutX="472.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="416.0" AnchorPane.topAnchor="44.0" />
+                  <Text layoutX="859.66796875" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 3:" AnchorPane.rightAnchor="80.5859375" AnchorPane.topAnchor="83.05078125" />
+                  <TextField id="key3" fx:id="key3" layoutX="737.0" layoutY="81.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="81.0" />
+                  <Button layoutX="13.0" layoutY="40.0" mnemonicParsing="false" onAction="#urlSetText" prefHeight="72.0" prefWidth="108.0" text="شروع" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="40.0" />
                   <Separator layoutX="131.0" layoutY="40.0" orientation="VERTICAL" prefHeight="72.0" prefWidth="4.0" />
-                  <Button layoutX="141.0" layoutY="79.0" mnemonicParsing="false" onAction="#DirectoryChoose" text="..." />
-                  <Label layoutX="355.0" layoutY="82.0" text="محل دانلود:" />
-                  <TextField fx:id="DrcTextField" layoutX="171.0" layoutY="79.0" prefHeight="25.0" prefWidth="177.0" text="D:\PY\" />
-                  <CheckBox fx:id="ChZip" layoutX="137.0" layoutY="49.0" mnemonicParsing="false" text=".zip" AnchorPane.leftAnchor="137.0" AnchorPane.topAnchor="49.0" />
-                  <CheckBox fx:id="ChExe" layoutX="185.0" layoutY="49.0" mnemonicParsing="false" text=".exe" AnchorPane.leftAnchor="185.0" AnchorPane.topAnchor="49.0" />
-                  <CheckBox fx:id="ChPdf" layoutX="233.0" layoutY="49.0" mnemonicParsing="false" text=".pdf" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="49.0" />
-                  <CheckBox fx:id="ChJpg" layoutX="281.0" layoutY="49.0" mnemonicParsing="false" text=".jpg" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="49.0" />
-                  <CheckBox fx:id="ChPng" layoutX="329.0" layoutY="49.0" mnemonicParsing="false" text=".png" AnchorPane.leftAnchor="329.0" AnchorPane.topAnchor="49.0" />
-                  <CheckBox fx:id="ChGif" layoutX="377.0" layoutY="49.0" mnemonicParsing="false" text=".gif" AnchorPane.leftAnchor="377.0" AnchorPane.topAnchor="49.0" />
-                  <Separator layoutX="420.0" layoutY="39.0" orientation="VERTICAL" prefHeight="72.0" prefWidth="4.0" />
-                  <Text layoutX="580.96875" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 4:" />
-                  <TextField id="key2" fx:id="key21" layoutX="455.0" layoutY="79.0" prefHeight="25.0" prefWidth="120.0" />
-                  <Label layoutX="359.0" layoutY="8.0" text="http://" />
-                  <CheckBox layoutX="918.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
-                  <CheckBox layoutX="655.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
-                  <CheckBox layoutX="918.0" layoutY="84.0" mnemonicParsing="false" textAlignment="RIGHT" />
-                  <CheckBox layoutX="655.0" layoutY="81.0" mnemonicParsing="false" textAlignment="RIGHT" />
-                  <Button layoutX="329.0" layoutY="3.0" mnemonicParsing="false" onAction="#OpenMainLink" prefHeight="25.0" prefWidth="24.0" text="🢅">
+                  <Button layoutX="151.0" layoutY="79.0" mnemonicParsing="false" onAction="#DirectoryChoose" text="..." />
+                  <Label layoutX="365.0" layoutY="82.0" text="محل دانلود:" />
+                  <TextField fx:id="DrcTextField" layoutX="181.0" layoutY="79.0" prefHeight="25.0" prefWidth="177.0" text="D:\PY\" />
+                  <CheckBox fx:id="ChZip" layoutX="147.0" layoutY="49.0" mnemonicParsing="false" text=".zip" AnchorPane.leftAnchor="147.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChExe" layoutX="195.0" layoutY="49.0" mnemonicParsing="false" text=".exe" AnchorPane.leftAnchor="195.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChPdf" layoutX="243.0" layoutY="49.0" mnemonicParsing="false" text=".pdf" AnchorPane.leftAnchor="243.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChJpg" layoutX="291.0" layoutY="49.0" mnemonicParsing="false" text=".jpg" AnchorPane.leftAnchor="291.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChPng" layoutX="339.0" layoutY="49.0" mnemonicParsing="false" text=".png" AnchorPane.leftAnchor="339.0" AnchorPane.topAnchor="49.0" />
+                  <CheckBox fx:id="ChGif" layoutX="387.0" layoutY="49.0" mnemonicParsing="false" text=".gif" AnchorPane.leftAnchor="387.0" AnchorPane.topAnchor="49.0" />
+                  <Separator layoutX="440.0" layoutY="39.0" orientation="VERTICAL" prefHeight="72.0" prefWidth="4.0" />
+                  <Text layoutX="596.69921875" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 4:" AnchorPane.rightAnchor="343.5546875" AnchorPane.topAnchor="83.05078125" />
+                  <TextField id="key2" fx:id="key21" layoutX="472.0" layoutY="81.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="416.0" AnchorPane.topAnchor="81.0" />
+                  <Label layoutX="455.0" layoutY="8.0" text="http://" AnchorPane.rightAnchor="570.0" AnchorPane.topAnchor="8.0" />
+                  <CheckBox layoutX="935.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="46.0" />
+                  <CheckBox layoutX="673.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" AnchorPane.rightAnchor="314.0" AnchorPane.topAnchor="46.0" />
+                  <CheckBox layoutX="935.0" layoutY="82.0" mnemonicParsing="false" textAlignment="RIGHT" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="82.0" />
+                  <CheckBox layoutX="673.0" layoutY="82.0" mnemonicParsing="false" textAlignment="RIGHT" AnchorPane.rightAnchor="314.0" AnchorPane.topAnchor="82.0" />
+                  <Button layoutX="425.0" layoutY="3.0" mnemonicParsing="false" onAction="#OpenMainLink" prefHeight="25.0" prefWidth="24.0" text="🢅" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="3.0">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -94,32 +94,32 @@
             </AnchorPane>
           <AnchorPane prefHeight="434.0" prefWidth="961.0">
                <children>
-                  <SplitPane dividerPositions="0.6777893639207507" layoutX="481.0" layoutY="134.0" prefHeight="416.0" prefWidth="961.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.6707663197729423" layoutX="481.0" layoutY="134.0" prefHeight="416.0" prefWidth="961.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="634.0">
                            <children>
-                              <SplitPane dividerPositions="0.4697674418604651" layoutX="262.0" layoutY="214.0" prefHeight="526.0" prefWidth="647.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <SplitPane dividerPositions="0.47819767441860467" layoutX="262.0" layoutY="214.0" prefHeight="526.0" prefWidth="688.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
                                           <Text layoutX="68.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لیست لینک‌های صفحه اول سایت:" textAlignment="CENTER" AnchorPane.topAnchor="12.0" />
-                                          <ListView id="result3" fx:id="listView3" layoutX="22.0" layoutY="35.0" onMouseClicked="#OpenLink" prefHeight="395.0" prefWidth="256.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="41.0" />
+                                          <ListView id="result3" fx:id="listView3" layoutX="22.0" layoutY="35.0" onMouseClicked="#OpenLink" prefHeight="395.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="41.0" />
                                        </children>
                                     </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="339.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="407.0">
                                        <children>
                                           <Text layoutX="106.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لیست فایل‌های یافت شده:" textAlignment="CENTER" AnchorPane.topAnchor="12.0" />
-                                          <ListView id="result2" fx:id="listView2" layoutX="42.0" layoutY="35.0" onMouseClicked="#OpenLink" prefHeight="395.0" prefWidth="256.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="41.0" />
+                                          <ListView id="result2" fx:id="listView2" layoutX="42.0" layoutY="35.0" onMouseClicked="#OpenLink" prefHeight="395.0" prefWidth="294.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="41.0" />
                                        </children>
                                     </AnchorPane>
                                 </items>
                               </SplitPane>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="321.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="359.0">
                            <children>
                               <Text layoutX="104.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لینک صفحات مرتبط:" textAlignment="CENTER" AnchorPane.topAnchor="12.05078125" />
-                              <ListView fx:id="listView1" layoutX="23.0" layoutY="42.0" onMouseClicked="#OpenLink" prefHeight="395.0" prefWidth="256.0" AnchorPane.topAnchor="41.0" />
+                              <ListView fx:id="listView1" layoutX="25.0" layoutY="42.0" onMouseClicked="#OpenLink" prefHeight="395.0" prefWidth="294.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="41.0" />
                            </children>
                         </AnchorPane>
                     </items>
