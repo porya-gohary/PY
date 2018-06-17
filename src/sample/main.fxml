@@ -45,8 +45,8 @@
                <children>
                   <Text layoutX="736.9296875" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="آدرس سایت:" textAlignment="CENTER" AnchorPane.rightAnchor="163.07421875" AnchorPane.topAnchor="7.05078125" />
                   <TextField fx:id="url" layoutX="397.0" layoutY="5.0" onAction="#urlSetText" prefHeight="25.0" prefWidth="331.0" AnchorPane.rightAnchor="233.0" AnchorPane.topAnchor="5.0" />
-                  <Text layoutX="853.96875" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 1:" AnchorPane.rightAnchor="39.28515625" AnchorPane.topAnchor="46.05078125" />
-                  <TextField id="key1" fx:id="key1" layoutX="730.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="44.0" />
+                  <Text layoutX="843.71484375" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 1:" AnchorPane.rightAnchor="49.5390625" AnchorPane.topAnchor="46.05078125" />
+                  <TextField id="key1" fx:id="key1" layoutX="720.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="44.0" />
                   <Text layoutX="224.01171875" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="تعداد سطوح:" AnchorPane.rightAnchor="670.982421875" AnchorPane.topAnchor="7.05078125" />
                   <MenuButton id="Lines" fx:id="menuButton" layoutX="131.0" layoutY="5.0" mnemonicParsing="false" text="انتخاب کنید" AnchorPane.rightAnchor="742.0" AnchorPane.topAnchor="5.0">
                     <items>
@@ -62,10 +62,10 @@
                         <MenuItem mnemonicParsing="false" text="10" />
                     </items>
                   </MenuButton>
-                  <Text layoutX="589.4453125" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 2:" AnchorPane.rightAnchor="303.80859375" AnchorPane.topAnchor="46.05078125" />
-                  <TextField id="key2" fx:id="key2" layoutX="465.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="376.0" AnchorPane.topAnchor="44.0" />
-                  <Text layoutX="854.19140625" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 3:" AnchorPane.rightAnchor="39.0625" AnchorPane.topAnchor="83.05078125" />
-                  <TextField id="key3" fx:id="key3" layoutX="730.0" layoutY="81.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="730.0" AnchorPane.topAnchor="81.0" />
+                  <Text layoutX="579.19140625" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 2:" AnchorPane.rightAnchor="314.0625" AnchorPane.topAnchor="46.05078125" />
+                  <TextField id="key2" fx:id="key2" layoutX="455.0" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.rightAnchor="386.0" AnchorPane.topAnchor="44.0" />
+                  <Text layoutX="843.9375" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 3:" AnchorPane.rightAnchor="49.31640625" AnchorPane.topAnchor="83.05078125" />
+                  <TextField id="key3" fx:id="key3" layoutX="720.0" layoutY="81.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="81.0" />
                   <Button layoutX="21.0" layoutY="40.0" mnemonicParsing="false" onAction="#urlSetText" prefHeight="25.0" prefWidth="100.0" text="شروع" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="840.0" AnchorPane.topAnchor="40.0" />
                   <Separator layoutX="131.0" layoutY="40.0" orientation="VERTICAL" prefHeight="72.0" prefWidth="4.0" />
                   <Button layoutX="141.0" layoutY="79.0" mnemonicParsing="false" onAction="#DirectoryChoose" text="..." />
@@ -78,9 +78,13 @@
                   <CheckBox layoutX="325.0" layoutY="49.0" mnemonicParsing="false" text=".png" />
                   <CheckBox layoutX="375.0" layoutY="49.0" mnemonicParsing="false" text=".gif" />
                   <Separator layoutX="420.0" layoutY="39.0" orientation="VERTICAL" prefHeight="72.0" prefWidth="4.0" />
-                  <Text layoutX="590.96875" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 4:" />
-                  <TextField id="key2" fx:id="key21" layoutX="465.0" layoutY="79.0" prefHeight="25.0" prefWidth="120.0" />
+                  <Text layoutX="580.96875" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمه کلیدی 4:" />
+                  <TextField id="key2" fx:id="key21" layoutX="455.0" layoutY="79.0" prefHeight="25.0" prefWidth="120.0" />
                   <Label layoutX="354.0" layoutY="9.0" text="http://" />
+                  <CheckBox ellipsisString="" layoutX="918.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <CheckBox ellipsisString="" layoutX="655.0" layoutY="46.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <CheckBox ellipsisString="" layoutX="918.0" layoutY="84.0" mnemonicParsing="false" textAlignment="RIGHT" />
+                  <CheckBox ellipsisString="" layoutX="655.0" layoutY="81.0" mnemonicParsing="false" textAlignment="RIGHT" />
                </children>
             </AnchorPane>
           <AnchorPane prefHeight="434.0" prefWidth="961.0">
