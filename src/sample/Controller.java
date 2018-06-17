@@ -83,7 +83,6 @@ public class Controller {
     CheckBox ChKey4;
 
 
-
     //Error CheckBox
     @FXML
     CheckBox ChErr;
@@ -229,7 +228,7 @@ public class Controller {
                 ErrorImg.setVisible(true);
             }
         });
-        if(ChErr.isSelected())
+        if (ChErr.isSelected())
             webCrawlerThread.stop();
 
     }

@@ -1,12 +1,6 @@
 package sample;
 
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 import java.util.HashSet;
 
 public class WebCrawlerThread extends Thread {
@@ -39,7 +33,7 @@ public class WebCrawlerThread extends Thread {
 
     public void run() {
         new FileDownloader(c, URL, zip, exe, pdf, jpg, png, gif).root(URL);
-        new WebCrawlerWithDepth(depth,c,zip, exe, pdf, jpg, png, gif).getPageLinks(URL,-1);
+        new WebCrawlerWithDepth(depth, c, zip, exe, pdf, jpg, png, gif).getPageLinks(URL, -1);
         c.Ready();
 
 
