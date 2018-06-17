@@ -32,7 +32,7 @@ public class FileDownloader {
         this.jpg = jpg;
         this.png = png;
         this.gif = gif;
-        Download();
+
     }
 
     public void Download() {
@@ -47,7 +47,7 @@ public class FileDownloader {
                 Document document = Jsoup.connect(URL).get();
 
                 //3. Parse the HTML to extract links to other URLs
-                Elements linksOnPage = document.select("a[href]");
+
 
                 //Download Files Fetch
                 Elements jpgs = document.getElementsByTag("img");
@@ -58,18 +58,17 @@ public class FileDownloader {
                 Elements zips = document.getElementsByTag("a");
 
 
-                //Elements pngs=document.select("a[href$=png]");
-                //Elements files=document.select("a[href$=zip]");
-                //Elements files=document.select("link[href]");
 
                 Elements files = document.select("a");
-                //Elements linksOnPage = document.select("a");
+
+
                 if (zip) {
                     for (Element image : zips) {
 
 
                         if (image.attr("abs:href").endsWith(".zip")) {
                             getFiles(image.attr("abs:href"), "zip");
+
                         }
 
 
@@ -106,9 +105,11 @@ public class FileDownloader {
 
                         if (image.attr("abs:src").endsWith(".jpg")) {
                             getFiles(image.attr("abs:src"), "jpg");
+                            c.addFilesURL(image.attr("abs:href"));
                         }
                         if (image.attr("abs:src").endsWith(".jpeg")) {
                             getFiles(image.attr("abs:src"), "jpeg");
+                            c.addFilesURL(image.attr("abs:href"));
                         }
 
 
@@ -122,6 +123,7 @@ public class FileDownloader {
 
                         if (image.attr("abs:src").endsWith(".png")) {
                             getFiles(image.attr("abs:src"), "png");
+                            c.addFilesURL(image.attr("abs:href"));
                         }
 
 
@@ -134,6 +136,7 @@ public class FileDownloader {
 
                         if (image.attr("abs:src").endsWith(".gif")) {
                             getFiles(image.attr("abs:src"), "gif");
+                            c.addFilesURL(image.attr("abs:href"));
                         }
 
 
@@ -150,13 +153,13 @@ public class FileDownloader {
                     }
                 }
 
-                for (Element page : linksOnPage) {
-                    //System.out.println(page.attr("abs:href"));
-
-                    c.addMainUrl(page.attr("abs:href"));
-
-
-                }
+//                for (Element page : linksOnPage) {
+//                    //System.out.println(page.attr("abs:href"));
+//
+//                    c.addMainUrl(page.attr("abs:href"));
+//
+//
+//                }
                 // c.Ready();
 
 
@@ -190,5 +193,25 @@ public class FileDownloader {
         out.close();
 
 
+    }
+
+    public void root(String rootURL)  {
+        Document document = null;
+        try {
+            document = Jsoup.connect(rootURL).get();
+        } catch (IOException e) {
+            c.Error("Error : " + e.getMessage());
+        }
+
+
+        Elements linksOnPage = document.select("a[href]");
+
+        for (Element page : linksOnPage) {
+                    //System.out.println(page.attr("abs:href"));
+
+                    c.addMainUrl(page.attr("abs:href"));
+
+
+                }
     }
 }

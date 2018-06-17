@@ -6,16 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.*;
-import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -26,12 +22,16 @@ public class Controller {
     private TextField url;
     @FXML
     private MenuButton menuButton;
+
     @FXML
-    private TextField key1;
+    TextField key1;
     @FXML
-    private TextField key2;
+    TextField key2;
     @FXML
-    private TextField key3;
+    TextField key3;
+    @FXML
+    TextField key4;
+
     @FXML
     private ListView listView1;
     @FXML
@@ -72,6 +72,22 @@ public class Controller {
     @FXML
     private CheckBox ChZip;
 
+    //KeyWords CheckBox
+    @FXML
+    CheckBox ChKey1;
+    @FXML
+    CheckBox ChKey2;
+    @FXML
+    CheckBox ChKey3;
+    @FXML
+    CheckBox ChKey4;
+
+
+
+    //Error CheckBox
+    @FXML
+    CheckBox ChErr;
+
 
     WebCrawlerThread webCrawlerThread;
     String ErrMsg;
@@ -106,8 +122,8 @@ public class Controller {
 
             //new WebCrawler(this).getPageLinks(url.getText());
             //new WebCrawlerThread(this,url.getText()).start();
-            webCrawlerThread = new WebCrawlerThread(this, url.getText(),ChZip.isSelected(),ChExe.isSelected(),
-                    ChPdf.isSelected(),ChJpg.isSelected(),ChPng.isSelected(),ChGif.isSelected(),Depth);
+            webCrawlerThread = new WebCrawlerThread(this, url.getText(), ChZip.isSelected(), ChExe.isSelected(),
+                    ChPdf.isSelected(), ChJpg.isSelected(), ChPng.isSelected(), ChGif.isSelected(), Depth);
             webCrawlerThread.start();
 
 
@@ -176,8 +192,8 @@ public class Controller {
     }
 
     @FXML
-    void addPagesURL(String url){
-        final String a=url;
+    void addPagesURL(String url) {
+        final String a = url;
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -197,9 +213,6 @@ public class Controller {
         ReadyLabel.setVisible(true);
 
 
-
-
-
     }
 
     void Error(String s) {
@@ -216,7 +229,8 @@ public class Controller {
                 ErrorImg.setVisible(true);
             }
         });
-        webCrawlerThread.stop();
+        if(ChErr.isSelected())
+            webCrawlerThread.stop();
 
     }
 
@@ -252,7 +266,7 @@ public class Controller {
             //No Directory selected
         } else {
             // System.out.println(selectedDirectory.getAbsolutePath());
-            StrorageFolder = selectedDirectory.getAbsolutePath()+"\\";
+            StrorageFolder = selectedDirectory.getAbsolutePath() + "\\";
             DrcTextField.setText(StrorageFolder);
 
 
@@ -260,12 +274,11 @@ public class Controller {
     }
 
     @FXML
-    void depthSelector(ActionEvent event){
-        MenuItem mi=(MenuItem) event.getSource();
-        Depth=Integer.parseInt(mi.getText());
-        menuButton.setText( mi.getText());
+    void depthSelector(ActionEvent event) {
+        MenuItem mi = (MenuItem) event.getSource();
+        Depth = Integer.parseInt(mi.getText());
+        menuButton.setText(mi.getText());
     }
-
 
 
 }

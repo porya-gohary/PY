@@ -38,7 +38,7 @@ public class WebCrawlerThread extends Thread {
     }
 
     public void run() {
-        new FileDownloader(c, URL, zip, exe, pdf, jpg, png, gif);
+        new FileDownloader(c, URL, zip, exe, pdf, jpg, png, gif).root(URL);
         new WebCrawlerWithDepth(depth,c,zip, exe, pdf, jpg, png, gif).getPageLinks(URL,-1);
         c.Ready();
 
