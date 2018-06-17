@@ -52,8 +52,7 @@ public class WebCrawlerThread extends Thread {
                 //3. Parse the HTML to extract links to other URLs
                 Elements linksOnPage = document.select("a[href]");
 
-               //Elements pngs=document.getElementsContainingText("[png]")
-               //Elements pngs=document.select(	"a[href*=\"exe\"]");
+               //Download Files Fetch
                Elements jpgs=document.getElementsByTag("img");
                Elements pngs=document.getElementsByTag("img");
                Elements gifs=document.getElementsByTag("img");
@@ -64,7 +63,9 @@ public class WebCrawlerThread extends Thread {
 
                 //Elements pngs=document.select("a[href$=png]");
                 //Elements files=document.select("a[href$=zip]");
-                Elements files=document.select("link[href]");
+                //Elements files=document.select("link[href]");
+
+                Elements files=document.select("a");
                 //Elements linksOnPage = document.select("a");
                 if(zip) {
                     for (Element image : zips) {
