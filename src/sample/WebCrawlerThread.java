@@ -14,12 +14,12 @@ public class WebCrawlerThread extends Thread {
     Controller c;
     String URL;
     private HashSet<String> links;
-    String StrorageFolder="D:\\PY\\";
+
 
 
     public WebCrawlerThread(Controller controller, String url){
         c=controller;
-        URL=url;
+        URL="http://"+url;
         links = new HashSet<String>();
 
     }
@@ -81,7 +81,7 @@ public class WebCrawlerThread extends Thread {
         Connection.Response resultImageResponse = Jsoup.connect(source).ignoreContentType(true).execute();
         String strImageName =source.substring( source.lastIndexOf("/") + 1 );
 
-        FileOutputStream out = (new FileOutputStream(new java.io.File(StrorageFolder +strImageName)));
+        FileOutputStream out = (new FileOutputStream(new java.io.File(c.StrorageFolder +strImageName)));
         out.write(resultImageResponse.bodyAsBytes());  // resultImageResponse.body() is where the image's contents are.
         out.close();
 

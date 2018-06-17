@@ -14,12 +14,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.xml.soap.Text;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -58,11 +60,14 @@ public class Controller {
     private Label ErrorLabel;
     @FXML
     private ImageView ErrorImg;
+    @FXML
+    private TextField DrcTextField;
 
 
 
     WebCrawlerThread webCrawlerThread;
     String ErrMsg;
+    String StrorageFolder="D:\\PY\\";
 
 
 
@@ -78,13 +83,8 @@ public class Controller {
 
         if(url.getText().isEmpty()){
             Parent root = FXMLLoader.load(getClass().getResource("ErrorMessage.fxml"));
-
             Scene scene=new Scene(root);
-
             Stage stage =new Stage();
-
-
-
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("About");
             stage.setScene(scene);
@@ -226,6 +226,22 @@ public class Controller {
 
 
 
+    }
+    @FXML
+    void DirectoryChoose(){
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File selectedDirectory = directoryChooser.showDialog(new Stage());
+
+        if(selectedDirectory == null){
+            //No Directory selected
+        }else{
+           // System.out.println(selectedDirectory.getAbsolutePath());
+            StrorageFolder=selectedDirectory.getAbsolutePath();
+            DrcTextField.setText(StrorageFolder);
+
+
+        }
     }
 
 
