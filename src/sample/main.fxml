@@ -78,13 +78,13 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
                                           <Text layoutX="68.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لیست لینک‌های صفحه اول سایت:" textAlignment="CENTER" AnchorPane.topAnchor="12.0" />
-                                          <ListView id="result3" fx:id="listView3" layoutX="22.0" layoutY="35.0" prefHeight="354.0" prefWidth="256.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="41.0" />
+                                          <ListView id="result3" fx:id="listView3" layoutX="22.0" layoutY="35.0" onMouseClicked="#OpenLink" prefHeight="354.0" prefWidth="256.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="41.0" />
                                        </children>
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="339.0">
                                        <children>
                                           <Text layoutX="106.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لیست فایل‌های یافت شده:" textAlignment="CENTER" AnchorPane.topAnchor="12.0" />
-                                          <ListView id="result2" fx:id="listView2" layoutX="42.0" layoutY="35.0" prefHeight="354.0" prefWidth="256.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="41.0" />
+                                          <ListView id="result2" fx:id="listView2" layoutX="42.0" layoutY="35.0" onMouseClicked="#OpenLink" prefHeight="354.0" prefWidth="256.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="41.0" />
                                        </children>
                                     </AnchorPane>
                                 </items>
@@ -94,7 +94,7 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="321.0">
                            <children>
                               <Text layoutX="104.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لینک صفحات مرتبط:" textAlignment="CENTER" AnchorPane.topAnchor="12.05078125" />
-                              <ListView fx:id="listView1" layoutX="23.0" layoutY="42.0" prefHeight="354.0" prefWidth="256.0" AnchorPane.topAnchor="41.0" />
+                              <ListView fx:id="listView1" layoutX="23.0" layoutY="42.0" onMouseClicked="#OpenLink" prefHeight="354.0" prefWidth="256.0" AnchorPane.topAnchor="41.0" />
                            </children>
                         </AnchorPane>
                     </items>

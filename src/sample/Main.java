@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import jdk.internal.dynalink.beans.StaticClass;
 
 import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class Main extends Application {
 
@@ -31,11 +34,21 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        
 
 
 
 
 
+    }
 
+    public static void openlink2(String s){
+        try {
+            Desktop.getDesktop().browse(new URI(s));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

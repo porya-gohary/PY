@@ -8,6 +8,9 @@ import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,11 +18,14 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.xml.soap.Text;
+import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
-
-public class Controller{
+public class Controller {
     @FXML
     private TextField url;
     @FXML
@@ -33,7 +39,7 @@ public class Controller{
     @FXML
     private ListView listView1;
     @FXML
-    private ListView listView2;
+     private ListView listView2;
     @FXML
     private ListView listView3;
     @FXML
@@ -164,9 +170,14 @@ public class Controller{
 
     @FXML
     void addMainUrl(String string){
-        listView1.getItems().add(string);
+        listView3.getItems().add(string);
 
 
+    }
+
+    @FXML
+    void addFilesURL(String url){
+        listView2.getItems().add(url);
     }
     @FXML
     void Ready(){
@@ -194,6 +205,26 @@ public class Controller{
             }
         });
         webCrawlerThread.stop();
+
+    }
+
+    @FXML
+    void OpenLink(javafx.scene.input.MouseEvent event){
+
+
+        if(event.getSource()==listView1&&(listView1.getSelectionModel().getSelectedItem()!=null))
+            Main.openlink2((String) listView1.getSelectionModel().getSelectedItem());
+        if(event.getSource()==listView2&&(listView2.getSelectionModel().getSelectedItem()!=null))
+            Main.openlink2((String) listView2.getSelectionModel().getSelectedItem());
+        if(event.getSource()==listView3 &&(listView3.getSelectionModel().getSelectedItem()!=null))
+            Main.openlink2((String) listView3.getSelectionModel().getSelectedItem());
+
+
+
+
+
+
+
 
     }
 
