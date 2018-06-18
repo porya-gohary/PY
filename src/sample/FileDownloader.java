@@ -67,7 +67,7 @@ public class FileDownloader {
                     for (Element image : zips) {
 
 
-                        if (image.attr("abs:href").endsWith(".zip")) {
+                        if (image.attr("abs:href").endsWith(".zip")&& !c.listView2.getItems().toString().contains(image.attr("abs:src"))) {
                             getFiles(image.attr("abs:href"), "zip");
 
                         }
@@ -79,7 +79,7 @@ public class FileDownloader {
                     for (Element image : exes) {
 
 
-                        if (image.attr("abs:href").endsWith(".exe")) {
+                        if (image.attr("abs:href").endsWith(".exe")&& !c.listView2.getItems().toString().contains(image.attr("abs:src"))) {
                             getFiles(image.attr("abs:href"), "exe");
                         }
 
@@ -91,7 +91,7 @@ public class FileDownloader {
                     for (Element image : pdfs) {
 
 
-                        if (image.attr("abs:href").endsWith(".pdf")) {
+                        if (image.attr("abs:href").endsWith(".pdf")&& !c.listView2.getItems().toString().contains(image.attr("abs:src"))) {
                             getFiles(image.attr("abs:href"), "pdf");
                         }
 
@@ -103,14 +103,14 @@ public class FileDownloader {
                 for (Element image : jpgs) {
 
 
-                    if (image.attr("abs:src").endsWith(".jpg")) {
+                    if (image.attr("abs:src").endsWith(".jpg")&& !c.listView2.getItems().toString().contains(image.attr("abs:src"))) {
                         c.addFilesURL(image.attr("abs:src"));
                         if (jpg) {
                             getFiles(image.attr("abs:src"), "jpg");
                         }
 
                     }
-                    if (image.attr("abs:src").endsWith(".jpeg")) {
+                    if (image.attr("abs:src").endsWith(".jpeg")&& !c.listView2.getItems().toString().contains(image.attr("abs:src"))) {
                         c.addFilesURL(image.attr("abs:src"));
                         if (jpg) {
                             getFiles(image.attr("abs:src"), "jpeg");
@@ -124,7 +124,7 @@ public class FileDownloader {
 
                 for (Element image : pngs) {
 
-                    if (image.attr("abs:src").endsWith(".png")) {
+                    if (image.attr("abs:src").endsWith(".png")&& !c.listView2.getItems().toString().contains(image.attr("abs:src"))) {
                         c.addFilesURL(image.attr("abs:src"));
                         if (png) {
                             getFiles(image.attr("abs:src"), "png");
@@ -138,7 +138,7 @@ public class FileDownloader {
                 for (Element image : gifs) {
 
 
-                    if (image.attr("abs:src").endsWith(".gif")) {
+                    if (image.attr("abs:src").endsWith(".gif")&& !c.listView2.getItems().toString().contains(image.attr("abs:src"))) {
                         c.addFilesURL(image.attr("abs:src"));
                         if (gif) {
                             getFiles(image.attr("abs:src"), "gif");
@@ -155,6 +155,7 @@ public class FileDownloader {
                     if (s.endsWith(".exe") || s.endsWith(".deb") || s.endsWith(".zip") || s.endsWith(".rar") ||
                             s.endsWith(".msi") || s.endsWith(".png") || s.endsWith(".jpg") || s.endsWith(".gif") ||
                             s.endsWith(".ico") || s.endsWith(".pdf") || s.endsWith(".tar")) {
+                        if( !c.listView2.getItems().toString().contains(file.attr("abs:href")))
                         c.addFilesURL(file.attr("abs:href"));
                     }
                 }

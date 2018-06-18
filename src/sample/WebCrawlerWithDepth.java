@@ -36,7 +36,9 @@ public class WebCrawlerWithDepth {
     }
 
     public void getPageLinks(String URL, int depth) {
-        if ((!links.contains(URL) && (depth < MAX_DEPTH) && (URL.contains(root) || !c.SubDomain.isSelected()))) {
+        k = false;
+        if ((!links.contains(URL)) && depth < MAX_DEPTH && (URL.contains(root) || !c.SubDomain.isSelected())) {
+
             if (c.ChKey1.isSelected()) {
                 if (new KeyWordsDetermine().Determining(URL, c.key1.getText())) {
                     if (c.ChKey2.isSelected()) {
@@ -72,20 +74,24 @@ public class WebCrawlerWithDepth {
                 c.addPagesURL(">> Depth: " + (depth + 1) + " " + URL);
                 k = true;
             }
+            links.add(URL);
             try {
-                links.add(URL);
+
 
                 Document document = Jsoup.connect(URL).get();
                 Elements linksOnPage = document.select("a[href]");
 
                 depth++;
-                if (k) {
+               // System.out.println("k="+k);
+
                     for (Element page : linksOnPage) {
-                        new FileDownloader(c, page.attr("abs:href"), zip, exe, pdf, jpg, png, gif,root).Download();
+                        if (k) {
+                            new FileDownloader(c, page.attr("abs:href"), zip, exe, pdf, jpg, png, gif, root).Download();
+                        }
                         getPageLinks(page.attr("abs:href"), depth);
                     }
-                    k = false;
-                }
+
+
             } catch (IOException e) {
                 // System.err.println("For '" + URL + "': " + e.getMessage());
                 c.Error("Error : " + e.getMessage());
