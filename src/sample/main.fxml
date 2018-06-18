@@ -24,6 +24,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#Export" text="Export" />
+                  <MenuItem mnemonicParsing="false" onAction="#Terminate" text="Terminate" />
               <MenuItem mnemonicParsing="false" onAction="#exit" text="Close" />
             </items>
           </Menu>

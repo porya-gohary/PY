@@ -33,11 +33,11 @@ public class Controller {
     TextField key4;
 
     @FXML
-    private ListView listView1;
+     ListView listView1;
     @FXML
-    private ListView listView2;
+     ListView listView2;
     @FXML
-    private ListView listView3;
+     ListView listView3;
     @FXML
     private Button closeBtn;
     @FXML
@@ -297,6 +297,22 @@ public class Controller {
         MenuItem mi = (MenuItem) event.getSource();
         Depth = Integer.parseInt(mi.getText());
         menuButton.setText(mi.getText());
+    }
+
+    @FXML
+    void Export(){
+        new Export().Export(this);
+
+    }
+    @FXML
+    void Terminate(){
+        webCrawlerThread.stop();
+        WorkingLabel.setVisible(false);
+        progressIndicator.setVisible(false);
+        ErrorLabel.setVisible(false);
+        ErrorImg.setVisible(false);
+        readyImage.setVisible(true);
+        ReadyLabel.setVisible(true);
     }
 
 
