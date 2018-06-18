@@ -89,6 +89,7 @@ public class WebCrawlerWithDepth {
                             new FileDownloader(c, page.attr("abs:href"), zip, exe, pdf, jpg, png, gif, root).Download();
                         }
                         getPageLinks(page.attr("abs:href"), depth);
+                        System.out.println("++>"+page.attr("abs:href"));
                     }
 
 
