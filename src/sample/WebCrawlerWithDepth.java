@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.scene.DepthTest;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,7 +9,7 @@ import java.io.IOException;
 import java.util.HashSet;
 
 public class WebCrawlerWithDepth {
-    private  int MAX_DEPTH = 2;
+    private int MAX_DEPTH = 2;
     private HashSet<String> links;
     Controller c;
 
@@ -20,56 +19,58 @@ public class WebCrawlerWithDepth {
     boolean jpg;
     boolean png;
     boolean gif;
-    boolean k=false;
+    boolean k = false;
+    String root;
 
-    public WebCrawlerWithDepth(int MAX_DEPTH, Controller controller, boolean zip, boolean exe, boolean pdf, boolean jpg, boolean png, boolean gif) {
+    public WebCrawlerWithDepth(int MAX_DEPTH, Controller controller, boolean zip, boolean exe, boolean pdf, boolean jpg, boolean png, boolean gif,String root) {
         links = new HashSet<>();
-        c=controller;
-        this.MAX_DEPTH=MAX_DEPTH;
+        c = controller;
+        this.MAX_DEPTH = MAX_DEPTH;
         this.zip = zip;
         this.exe = exe;
         this.pdf = pdf;
         this.jpg = jpg;
         this.png = png;
         this.gif = gif;
+        this.root=root;
     }
 
     public void getPageLinks(String URL, int depth) {
-        if ((!links.contains(URL) && (depth < MAX_DEPTH))) {
-            if(c.ChKey1.isSelected()) {
-                if(new KeyWordsDetermine().Determining(URL,c.key1.getText())) {
-                    if(c.ChKey2.isSelected()) {
-                        if(new KeyWordsDetermine().Determining(URL,c.key2.getText())) {
-                            if(c.ChKey3.isSelected()) {
-                                if(new KeyWordsDetermine().Determining(URL,c.key3.getText())) {
-                                    if(c.ChKey4.isSelected()) {
-                                        if(new KeyWordsDetermine().Determining(URL,c.key4.getText())) {
+        if ((!links.contains(URL) && (depth < MAX_DEPTH) && (URL.contains(root) || !c.SubDomain.isSelected()))) {
+            if (c.ChKey1.isSelected()) {
+                if (new KeyWordsDetermine().Determining(URL, c.key1.getText())) {
+                    if (c.ChKey2.isSelected()) {
+                        if (new KeyWordsDetermine().Determining(URL, c.key2.getText())) {
+                            if (c.ChKey3.isSelected()) {
+                                if (new KeyWordsDetermine().Determining(URL, c.key3.getText())) {
+                                    if (c.ChKey4.isSelected()) {
+                                        if (new KeyWordsDetermine().Determining(URL, c.key4.getText())) {
                                             System.out.println(">> Depth: " + depth + " [" + URL + "]");
                                             c.addPagesURL(">> Depth: " + (depth + 1) + " " + URL);
-                                            k=true;
+                                            k = true;
                                         }
-                                    }else{
+                                    } else {
                                         System.out.println(">> Depth: " + depth + " [" + URL + "]");
                                         c.addPagesURL(">> Depth: " + (depth + 1) + " " + URL);
-                                        k=true;
+                                        k = true;
                                     }
                                 }
-                            }else{
+                            } else {
                                 System.out.println(">> Depth: " + depth + " [" + URL + "]");
                                 c.addPagesURL(">> Depth: " + (depth + 1) + " " + URL);
-                                k=true;
+                                k = true;
                             }
                         }
-                    }else{
+                    } else {
                         System.out.println(">> Depth: " + depth + " [" + URL + "]");
                         c.addPagesURL(">> Depth: " + (depth + 1) + " " + URL);
-                        k=true;
+                        k = true;
                     }
                 }
-            }else{
+            } else {
                 System.out.println(">> Depth: " + depth + " [" + URL + "]");
                 c.addPagesURL(">> Depth: " + (depth + 1) + " " + URL);
-                k=true;
+                k = true;
             }
             try {
                 links.add(URL);
@@ -78,15 +79,15 @@ public class WebCrawlerWithDepth {
                 Elements linksOnPage = document.select("a[href]");
 
                 depth++;
-                if(k) {
+                if (k) {
                     for (Element page : linksOnPage) {
-                        new FileDownloader(c, page.attr("abs:href"), zip, exe, pdf, jpg, png, gif).Download();
+                        new FileDownloader(c, page.attr("abs:href"), zip, exe, pdf, jpg, png, gif,root).Download();
                         getPageLinks(page.attr("abs:href"), depth);
                     }
-                    k=false;
+                    k = false;
                 }
             } catch (IOException e) {
-               // System.err.println("For '" + URL + "': " + e.getMessage());
+                // System.err.println("For '" + URL + "': " + e.getMessage());
                 c.Error("Error : " + e.getMessage());
             }
         }

@@ -19,7 +19,9 @@ public class WebCrawlerThread extends Thread {
 
     public WebCrawlerThread(Controller controller, String url, boolean zip, boolean exe, boolean pdf, boolean jpg, boolean png, boolean gif, int depth) {
         c = controller;
+        System.out.println(c);
         URL = "http://" + url;
+        //URL =  url;
         links = new HashSet<String>();
         this.zip = zip;
         this.exe = exe;
@@ -32,9 +34,12 @@ public class WebCrawlerThread extends Thread {
     }
 
     public void run() {
-        new FileDownloader(c, URL, zip, exe, pdf, jpg, png, gif).root(URL);
-        new WebCrawlerWithDepth(depth, c, zip, exe, pdf, jpg, png, gif).getPageLinks(URL, -1);
-        c.Ready();
+
+            new FileDownloader(c, URL, zip, exe, pdf, jpg, png, gif,URL).root(URL);
+            new WebCrawlerWithDepth(depth, c, zip, exe, pdf, jpg, png, gif,URL).getPageLinks(URL, -1);
+            c.Ready();
+
+
 
 
     }

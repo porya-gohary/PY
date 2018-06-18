@@ -21,8 +21,9 @@ public class FileDownloader {
     boolean jpg;
     boolean png;
     boolean gif;
+    String root;
 
-    public FileDownloader(Controller controller, String url, boolean zip, boolean exe, boolean pdf, boolean jpg, boolean png, boolean gif) {
+    public FileDownloader(Controller controller, String url, boolean zip, boolean exe, boolean pdf, boolean jpg, boolean png, boolean gif,String root) {
         c = controller;
         URL = url;
         links = new HashSet<String>();
@@ -32,11 +33,12 @@ public class FileDownloader {
         this.jpg = jpg;
         this.png = png;
         this.gif = gif;
+        this.root=root;
 
     }
 
     public void Download() {
-        if (!links.contains(URL)) {
+        if (!links.contains(URL) && !URL.isEmpty() && (URL.contains(root) || !c.SubDomain.isSelected())) {
             try {
                 //4. (i) If not add it to the index
                 if (links.add(URL)) {
@@ -56,7 +58,6 @@ public class FileDownloader {
                 Elements pdfs = document.getElementsByTag("a");
                 Elements exes = document.getElementsByTag("a");
                 Elements zips = document.getElementsByTag("a");
-
 
 
                 Elements files = document.select("a");
@@ -99,48 +100,53 @@ public class FileDownloader {
                 }
 
 
-                if (jpg) {
-                    for (Element image : jpgs) {
+                for (Element image : jpgs) {
 
 
-                        if (image.attr("abs:src").endsWith(".jpg")) {
+                    if (image.attr("abs:src").endsWith(".jpg")) {
+                        c.addFilesURL(image.attr("abs:src"));
+                        if (jpg) {
                             getFiles(image.attr("abs:src"), "jpg");
-                            c.addFilesURL(image.attr("abs:href"));
                         }
-                        if (image.attr("abs:src").endsWith(".jpeg")) {
+
+                    }
+                    if (image.attr("abs:src").endsWith(".jpeg")) {
+                        c.addFilesURL(image.attr("abs:src"));
+                        if (jpg) {
                             getFiles(image.attr("abs:src"), "jpeg");
-                            c.addFilesURL(image.attr("abs:href"));
                         }
 
-
                     }
+
+
                 }
 
 
-                if (png) {
-                    for (Element image : pngs) {
+                for (Element image : pngs) {
 
-
-                        if (image.attr("abs:src").endsWith(".png")) {
+                    if (image.attr("abs:src").endsWith(".png")) {
+                        c.addFilesURL(image.attr("abs:src"));
+                        if (png) {
                             getFiles(image.attr("abs:src"), "png");
-                            c.addFilesURL(image.attr("abs:href"));
                         }
-
-
                     }
+
+
                 }
 
-                if (gif) {
-                    for (Element image : gifs) {
+
+                for (Element image : gifs) {
 
 
-                        if (image.attr("abs:src").endsWith(".gif")) {
+                    if (image.attr("abs:src").endsWith(".gif")) {
+                        c.addFilesURL(image.attr("abs:src"));
+                        if (gif) {
                             getFiles(image.attr("abs:src"), "gif");
-                            c.addFilesURL(image.attr("abs:href"));
                         }
 
-
                     }
+
+
                 }
 
 
@@ -195,7 +201,7 @@ public class FileDownloader {
 
     }
 
-    public void root(String rootURL)  {
+    public void root(String rootURL) {
         Document document = null;
         try {
             document = Jsoup.connect(rootURL).get();
@@ -207,11 +213,11 @@ public class FileDownloader {
         Elements linksOnPage = document.select("a[href]");
 
         for (Element page : linksOnPage) {
-                    //System.out.println(page.attr("abs:href"));
+            //System.out.println(page.attr("abs:href"));
 
-                    c.addMainUrl(page.attr("abs:href"));
+            c.addMainUrl(page.attr("abs:href"));
 
 
-                }
+        }
     }
 }

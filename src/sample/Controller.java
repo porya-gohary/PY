@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class Controller {
     @FXML
-    private TextField url;
+     TextField url;
     @FXML
     private MenuButton menuButton;
 
@@ -86,6 +86,11 @@ public class Controller {
     //Error CheckBox
     @FXML
     CheckBox ChErr;
+
+    @FXML
+    CheckBox SubDomain;
+
+
 
 
     WebCrawlerThread webCrawlerThread;
@@ -180,14 +185,28 @@ public class Controller {
 
     @FXML
     void addMainUrl(String string) {
-        listView3.getItems().add(string);
+         final String st=string;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                listView3.getItems().add(st);
+            }
+        });
+
 
 
     }
 
     @FXML
-    void addFilesURL(String url) {
-        listView2.getItems().add(url);
+    void addFilesURL(final String url) {
+        final String Url=url;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                listView2.getItems().add(Url);
+            }
+        });
+
     }
 
     @FXML
@@ -251,7 +270,8 @@ public class Controller {
     void OpenMainLink() {
         System.out.println(url.getText());
         if (!url.getText().isEmpty()) {
-            Main.openlink2("http://" + url.getText());
+           Main.openlink2("http://" + url.getText());
+
         }
     }
 
